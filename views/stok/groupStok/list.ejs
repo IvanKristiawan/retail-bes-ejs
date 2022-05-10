@@ -16,7 +16,7 @@
         <% groupStoks.forEach((groupStok, i) => { %> 
             <% if(i>=tempLowI && i<tempUpI) { %> 
                 <tr>
-                    <th scope="row"><%= groupStok.kode %></th>
+                    <th scope="row"><a href="/stoks/groupStok/<%= groupStok._id %>"><%= groupStok.kode %></a></th>
                     <td><a href="/stoks/groupStok/<%= groupStok._id %>"><%= groupStok.namaGroup %></a></td>
                 </tr>
             <% } %>

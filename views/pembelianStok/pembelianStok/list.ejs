@@ -19,8 +19,8 @@
         <% for(let pembelianStok of pembelianStoks) { %> 
             <tr>
                 <th scope="row"><a href="/pembelianStok/<%= pembelianStok.nomorNota %>"><%= pembelianStok.nomorNota %></a></th>
-                <td><%= pembelianStok.tanggal.getDate() %>/<%= pembelianStok.tanggal.getMonth()+1 %>/<%= pembelianStok.tanggal.getFullYear() %></td>
-                <td><%= pembelianStok.jenis %></td>
+                <td><a href="/pembelianStok/<%= pembelianStok.nomorNota %>"><%= pembelianStok.tanggal.getDate() %>/<%= pembelianStok.tanggal.getMonth()+1 %>/<%= pembelianStok.tanggal.getFullYear() %></a></td>
+                <td><a href="/pembelianStok/<%= pembelianStok.nomorNota %>"><%= pembelianStok.jenis %></a></td>
                 <% for(let supplier of suppliers) {%>
                     <% if(supplier.kode == pembelianStok.kodeSupplier) {%>
                         <td><%= pembelianStok.kodeSupplier %> - <%= supplier.namaSupplier %></td>

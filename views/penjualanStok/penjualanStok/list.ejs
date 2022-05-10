@@ -18,7 +18,7 @@
         <% for(let penjualanStok of penjualanStoks) { %> 
             <tr>
                 <th scope="row"><a href="/penjualanStok/<%= penjualanStok.nomorNota %>"><%= penjualanStok.nomorNota %></a></th>
-                <td><%= penjualanStok.tanggal.getDate() %>/<%= penjualanStok.tanggal.getMonth()+1 %>/<%= penjualanStok.tanggal.getFullYear() %></td>
+                <td><a href="/penjualanStok/<%= penjualanStok.nomorNota %>"><%= penjualanStok.tanggal.getDate() %>/<%= penjualanStok.tanggal.getMonth()+1 %>/<%= penjualanStok.tanggal.getFullYear() %></a></td>
                 <td><%= penjualanStok.jenis %></td>
                 <td><%= penjualanStok.total %></td>
             </tr>

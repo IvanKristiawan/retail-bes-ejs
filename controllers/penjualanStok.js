@@ -13,7 +13,7 @@ module.exports.index = async(req, res) => {
 module.exports.penjualanStokSearch = async(req, res) => {
     const {nomorNota} = req.body;
     const suppliers = await Supplier.find({});
-    const penjualanStoks = await PenjualanStok.find({nomorNota: nomorNota});
+    const penjualanStoks = await PenjualanStok.find({nomorNota: {$regex: nomorNota}});
     res.render('penjualanStok/penjualanStok/index', {penjualanStoks, suppliers});
 }
 

@@ -21,13 +21,13 @@
         <% stoks.forEach((stok, i) => { %> 
             <% if(i>=tempLowI && i<tempUpI) { %> 
                 <tr>
-                    <th scope="row"><%= stok.kode %></th>
+                    <th scope="row"><a href="/stoks/stok/<%= stok._id %>"><%= stok.kode %></a></th>
                     <td><a href="/stoks/stok/<%= stok._id %>"><%= stok.namaStok %></a></td>
-                    <td><%= stok.satuanKecil %></td>
-                    <td><%= stok.satuanBesar %></td>
-                    <td><%= stok.konversi %></td>
-                    <td><%= stok.hargaJualKecil %></td>
-                    <td><%= stok.hargaJualBesar %></td>
+                    <td><a href="/stoks/stok/<%= stok._id %>"><%= stok.satuanKecil %></a></td>
+                    <td><a href="/stoks/stok/<%= stok._id %>"><%= stok.satuanBesar %></a></td>
+                    <td><a href="/stoks/stok/<%= stok._id %>"><%= stok.konversi %></a></td>
+                    <td><a href="/stoks/stok/<%= stok._id %>"><%= stok.hargaJualKecil %></a></td>
+                    <td><a href="/stoks/stok/<%= stok._id %>"><%= stok.hargaJualBesar %></a></td>
                 </tr>
             <% } %>
         <% }) %>      

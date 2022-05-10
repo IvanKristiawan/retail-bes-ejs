@@ -17,10 +17,10 @@
     <tbody>
         <% for(let supplier of suppliers) { %> 
             <tr>
-                <th scope="row"><%= supplier.kode %></th>
+                <th scope="row"><a href="/suppliers/<%= supplier._id %>"><%= supplier.kode %></a></th>
                 <td><a href="/suppliers/<%= supplier._id %>"><%= supplier.namaSupplier %></a></td>
-                <td><%= supplier.alamatSupplier %></td>
-                <td><%= supplier.kota %></td>
+                <td><a href="/suppliers/<%= supplier._id %>"><%= supplier.alamatSupplier %></a></td>
+                <td><a href="/suppliers/<%= supplier._id %>"><%= supplier.kota %></a></td>
             </tr>
         <% } %> 
     </tbody>
