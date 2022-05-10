@@ -1,0 +1,217 @@
+<% layout('layouts/boilerplate') %> 
+
+<style>
+    @media (max-width: 800px) {
+        .wrapper {
+            flex-direction: column;
+        }
+    }
+    .keterangan {
+        width: 96%;
+        background-color: #B2BABB;
+    }
+    hr {
+        color: gray;
+        border: 3px solid gray;
+    }
+    button {
+        background: none;
+        color: inherit;
+        border: none;
+        padding: 0;
+        font: inherit;
+        cursor: pointer;
+        outline: inherit;
+    }
+    .long {
+        width: 98%;
+    }
+    .carousel-control-next,
+    .carousel-control-prev /*, .carousel-indicators */ {
+        filter: invert(100%);
+    }
+    .carousel {
+        width: 250px;
+        height: 200px;
+    }
+    img {
+        width: 200px;
+        height: 200px;
+    }
+    .img-wrapper {
+        width: 200px;
+        height: 200px;
+    }
+    .index-wrapper {
+        border: 1px solid #B2BABB;
+        padding-top: 15px;
+        border-radius: 10px;
+        background-color: #D6EAF8;
+        margin-top: 20px;
+    }
+    .carousel-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .add-btn {
+        margin-top: 20px;
+    }
+    .wrapper {
+        border: 1px solid #CCD1D1;
+        border-radius: 10px;
+        margin: 20px 0px;
+        display: flex;
+        padding-top: 10px;
+    }
+    .list-wrapper {
+        display: flex;
+        flex: 2;
+    }
+    .detail-wrapper {
+        flex: 1;
+    }
+    .detail-data-wrapper {
+        flex: 3;
+    }
+    .list-details {
+        font-size: 15px;
+        font-weight: 500;
+        margin-bottom: 18px;
+    }
+    .harga-wrapper {
+        flex: 2;
+    }
+    .add-flex {
+        flex: 3;
+    }
+    .margin-right {
+        margin-right: 5px;
+    }
+</style>
+
+<div class="btn-group dropend">
+    <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+      Stok
+    </button>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="/stoks/groupStok">Group Stok</a></li>
+        <li><a class="dropdown-item" href="/stoks/stok">Stok</a></li>
+    </ul>
+</div>
+<div class="container index-wrapper">
+    <h3>STOK</h3>
+    <div class="container">
+        <form class="d-flex" action="/stoks/stok/search" method="POST">
+            <input class="form-control me-2" placeholder="Cari Stok" aria-label="Search" type="text" name="namaStok" id="namaStok">
+            <button class="btn btn-outline-dark" type="submit">Search</button>
+        </form>
+        <a href="/stoks/stok/new"><button class="btn btn-primary add-btn">Add</button></a>
+        <a href="/stoks/stok/<%= stok._id %>/edit"><button class="btn btn-warning add-btn">Edit</button></a>
+        <form action="/stoks/stok/<%= stok._id %>?_method=DELETE" method="POST">
+            <button class="btn btn-danger" style="margin-top: 10px;">Delete</button>
+            <% stok.images.forEach(function(img, i) { %> 
+                <input type="text" id="image-<%= i %>" name="deleteImages[]" value="<%= img.filename %>" style="visibility: hidden;">
+            <% }) %>     
+        </form>
+    </div>
+    <div class="carousel-wrapper">
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <% stok.images.forEach((img, i) => {%>
+                <div class="carousel-item <%= i === 0 ? 'active' : '' %>">
+                    <img src="<%= img.url %>" class="d-block w-100" alt="...">
+                </div>
+              <% }) %>    
+            </div>
+            <% if(stok.images.length > 1) {%> 
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </button>
+            <% } %> 
+        </div>
+    </div>
+    <div class="container wrapper">
+        <div class="list-wrapper">
+            <div class="detail-wrapper">
+                <p class="list-details">Group</p>
+                <p class="list-details">Kode</p>
+                <p class="list-details">Nama</p>
+                <p class="list-details">Merk</p>
+                <p class="list-details">Satuan K / B</p>
+                <p class="list-details">Qty</p>
+                <p class="list-details">Harga Jual Kecil</p>
+                <p class="list-details">Harga Jual Besar</p>
+            </div>
+            <div class="detail-data-wrapper">
+                <div class="list-wrapper">
+                    <p class="margin-right">:</p>
+                    <div class="detail-wrapper">
+                        <input type="text" style="width: 100%;" value="<%= stok.kodeGrup %>" readonly="readonly">
+                    </div>
+                    <% if(findGroupStok) {%> 
+                        <div class="detail-data-wrapper">
+                            <input class="keterangan" type="text" disabled value="<%= findGroupStok.namaGroup %>">
+                        </div>
+                    <% } %>     
+                </div>
+                <div class="list-wrapper">
+                    <p class="margin-right">:</p>
+                    <div class="detail-wrapper">
+                        <input type="text" value="<%= stok.kode %>" readonly="readonly">
+                    </div>
+                </div>
+                <div class="list-wrapper">
+                    <p class="margin-right">:</p>
+                    <div class="detail-wrapper">
+                        <input class="long" type="text" value="<%= stok.namaStok %>" readonly="readonly">
+                    </div>
+                </div>
+                <div class="list-wrapper">
+                    <p class="margin-right">:</p>
+                    <div class="detail-wrapper">
+                        <input class="long" type="text" value="<%= stok.merk %>" readonly="readonly">
+                    </div>
+                </div>
+                <div class="list-wrapper">
+                    <p class="margin-right">:</p>
+                    <div class="detail-wrapper">
+                        <input type="text" style="width: 100%;" value="<%= stok.satuanKecil %>" readonly="readonly" style="width: 140px;">
+                    </div>
+                    <div class="detail-wrapper">
+                        <input type="text" class="long" value="<%= stok.satuanBesar %>" readonly="readonly" style="width: 140px;">
+                    </div>
+                    <div class="detail-wrapper">
+                        <p class="list-details">Konversi</p>
+                    </div>
+                    <p class="margin-right">:</p>
+                    <div class="detail-wrapper">
+                        <input type="text" style="width: 92%" value="<%= stok.konversi %>" readonly="readonly" style="width: 50px;">
+                    </div>
+                </div>
+                <div class="list-wrapper">
+                    <p class="margin-right">:</p>
+                    <div class="detail-wrapper">
+                        <input class="long" type="text" value="<%= stok.qty %>" readonly="readonly">
+                    </div>
+                </div>
+                <div class="list-wrapper">
+                    <p class="margin-right">:</p>
+                    <div class="detail-wrapper">
+                        <input class="long" type="text" value="<%= stok.hargaJualKecil %>" readonly="readonly">
+                    </div>
+                </div>
+                <div class="list-wrapper">
+                    <p class="margin-right">:</p>
+                    <div class="detail-wrapper">
+                        <input class="long" type="text" value="<%= stok.hargaJualBesar %>" readonly="readonly">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="/stoks/stok">back</a>
+</div>

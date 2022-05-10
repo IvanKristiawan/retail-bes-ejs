@@ -1,0 +1,65 @@
+<% layout('layouts/boilerplate') %> 
+
+<style>
+    #kode {
+        border: 1px solid #B2BABB;
+        border-radius: 5px;
+        margin-bottom: 15px;
+    }
+    .new-container {
+        background-color: #D6EAF8;
+        border: 1px solid #B2BABB;
+        border-radius: 10px;
+    }
+    .new-form {
+        margin: 20px 0px;
+    }
+</style>
+
+<div class="container new-container">
+    <h1>TAMBAH STOK PEMBELIAN</h1>
+    <div class="container">
+        <form class="d-flex" action="/pembelianStok/<%= id %>/searchStok" method="POST">
+            <input class="form-control me-2" placeholder="Cari Nama Stok" aria-label="Search" type="text" name="namaStok" id="namaStok">
+            <button class="btn btn-outline-dark" type="submit">Search</button>
+        </form>
+    </div>
+    <form action="/pembelianStok/<%= id %>/newa" method="POST" class="new-form">
+        <input type="text" name="nomorNota" id="nomorNota" value="<%= pembelianStok.nomorNota %>" hidden>
+        <div class="input-group mb-3">
+            <div class="col-md-2 col-sm-4 col-4">
+                <span class="input-group-text text-light bg-dark" id="inputGroup-sizing-default">Kode</span>
+            </div>
+            <div class="col-md-10 col-sm-8 col-8">
+                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="kodeStok" id="kodeStok" value="<%= kodeStok %>">
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <div class="col-md-2 col-sm-4 col-4">
+                <span class="input-group-text text-light bg-dark" id="inputGroup-sizing-default">Qty</span>
+            </div>
+            <div class="col-md-10 col-sm-8 col-8">
+                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="qty" id="qty">
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <div class="col-md-2 col-sm-4 col-4">
+                <span class="input-group-text text-light bg-dark" id="inputGroup-sizing-default">Harga Satuan</span>
+            </div>
+            <div class="col-md-10 col-sm-8 col-8">
+                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="hargaSatuan" id="hargaSatuan">
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <div class="col-md-2 col-sm-4 col-4">
+                <span class="input-group-text text-light bg-dark" id="inputGroup-sizing-default">Potongan</span>
+            </div>
+            <div class="col-md-10 col-sm-8 col-8">
+                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="potongan" id="potongan">
+            </div>
+        </div>
+      <button class="btn btn-primary">Submit</button>
+    </form>
+    <a href="/pembelianStok/<%= id %>">back</a>
+  </div>
+  

@@ -1,0 +1,39 @@
+<% layout('layouts/boilerplate') %> 
+
+<style>
+    #kode {
+        border: 1px solid #B2BABB;
+        border-radius: 5px;
+        margin-bottom: 15px;
+    }
+    .new-container {
+        background-color: #D6EAF8;
+        border: 1px solid #B2BABB;
+        border-radius: 10px;
+    }
+    .new-form {
+        margin: 20px 0px;
+    }
+</style>
+
+<div class="container new-container">
+    <h2>EDIT GROUP STOK</h2>
+    <form action="/stoks/groupStok/<%= groupStok._id %>?_method=PUT" method="POST" class="new-form">
+        <div class="edit-container">
+            <label for="kode">Kode</label>
+            <br>
+            <input type="text" name="kode" id="kode" placeholder="kode" value="<%= groupStok.kode %>">
+        </div>
+        <div class="input-group mb-3">
+            <div class="col-md-2">
+                <span class="input-group-text text-light bg-dark" id="inputGroup-sizing-default">Nama Group</span>
+            </div>
+            <div class="col-md-10">
+                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="namaGroup" id="namaGroup" value="<%= groupStok.namaGroup %>">
+            </div>
+        </div>
+      <button class="btn btn-primary">Submit</button>
+    </form>
+    <a href="/stoks/groupStok/<%= groupStok._id %>">back</a>
+  </div>
+  

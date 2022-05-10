@@ -1,0 +1,77 @@
+<% layout('layouts/boilerplate') %> 
+
+<style>
+    @media (max-width: 800px) {
+        .wrapper {
+            flex-direction: column;
+        }
+    }
+    .index-wrapper {
+        border: 1px solid #B2BABB;
+        padding-top: 15px;
+        border-radius: 10px;
+        background-color: #D6EAF8;
+        margin-top: 20px;
+    }
+    .add-btn {
+        margin-top: 20px;
+    }
+    .wrapper {
+        border: 1px solid #CCD1D1;
+        border-radius: 10px;
+        margin: 20px 0px;
+        display: flex;
+        padding-top: 10px;
+    }
+    .list-wrapper {
+        display: flex;
+        flex: 1;
+    }
+    .detail-wrapper {
+        flex: 1;
+    }
+    .detail-data-wrapper {
+        flex: 2;
+    }
+    .list-details {
+        font-size: 15px;
+        font-weight: 500;
+    }
+</style>
+
+<div class="btn-group dropend">
+    <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+      Stok
+    </button>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="/stoks/groupStok">Group Stok</a></li>
+        <li><a class="dropdown-item" href="/stoks/stok">Stok</a></li>
+    </ul>
+</div>
+<div class="container index-wrapper">
+    <h3>GROUP STOK</h3>
+    <div class="container">
+        <form class="d-flex" action="/stoks/groupStok/search" method="POST">
+            <input class="form-control me-2" placeholder="Cari Group Stok" aria-label="Search" type="text" name="namaGroup" id="namaGroup">
+            <button class="btn btn-outline-dark" type="submit">Search</button>
+        </form>
+        <a href="/stoks/groupStok/new"><button class="btn btn-primary add-btn">Add</button></a>
+        <a href="/stoks/groupStok/<%= groupStok._id %>/edit"><button class="btn btn-warning add-btn">Edit</button></a>
+        <form action="/stoks/groupStok/<%= groupStok._id %>?_method=DELETE" method="POST">
+            <button class="btn btn-danger" style="margin-top: 10px;">Delete</button>
+        </form>
+    </div>
+    <div class="container wrapper">
+        <div class="list-wrapper">
+            <div class="detail-wrapper">
+                <p class="list-details">Kode</p>
+                <p class="list-details">Nama Group</p>
+            </div>
+            <div class="detail-data-wrapper">
+                <p class="list-details">: <%= groupStok.kode %></p>
+                <p class="list-details">: <%= groupStok.namaGroup %></p>
+            </div>
+        </div>
+    </div>
+    <a href="/stoks/groupStok">back</a>
+</div>

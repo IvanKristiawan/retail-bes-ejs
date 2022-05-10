@@ -1,0 +1,66 @@
+<!-- <select class="form-select" multiple aria-label="multiple select example">
+    <option selected>Open this select menu</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </select> -->
+
+<% layout('layouts/boilerplate') %> 
+
+<style>
+    @media (max-width: 800px) {
+        .wrapper {
+            flex-direction: column;
+        }
+    }
+    .index-wrapper {
+        border: 1px solid #B2BABB;
+        padding-top: 15px;
+        border-radius: 10px;
+        background-color: #D6EAF8;
+    }
+    .add-btn {
+        margin-top: 20px;
+    }
+    .wrapper {
+        border: 1px solid #CCD1D1;
+        border-radius: 10px;
+        margin: 20px 0px;
+        display: flex;
+        padding-top: 10px;
+    }
+    .list-wrapper {
+        display: flex;
+        flex: 1;
+    }
+    .detail-wrapper {
+        margin-right: 30px;
+    }
+    .list-details {
+        font-size: 15px;
+        font-weight: 500;
+    }
+    a {
+        color: inherit; /* blue colors for links too */
+        text-decoration: inherit; /* no underline */
+    }
+</style>
+
+<div class="container index-wrapper">
+    <div class="container">
+        <div class="container new-container">
+            <form class="d-flex flex-column" action="/pembelianStok/<%= id %>/newaSearch" method="POST">
+                <div class="input-group mb-3">
+                    <select name="kodeStok" id="kodeStok" class="form-select" multiple aria-label="multiple select example" style="height: 500px; margin-bottom: 10px;">
+                        <option selected>Pilih Stok</option>
+                        <% stoks.forEach((stok, i) => { %> 
+                            <option value="<%= stok.kode %>"><%= stok.kode %> - <%= stok.namaStok %></option>
+                        <% }) %>     
+                    </select>  
+                </div>
+                <button class="btn btn-primary mb-4">Submit</button>
+            </form>
+        </div>
+    </div>        
+</div>
+

@@ -1,0 +1,33 @@
+<style>
+    a {
+        color: inherit; /* blue colors for links too */
+        text-decoration: inherit; /* no underline */
+    }
+</style>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th scope="col">No. Nota</th>
+            <th scope="col">Tanggal</th>
+            <th scope="col">Jenis</th>
+            <th scope="col">Kode Supplier</th>
+            <th scope="col">Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% for(let pembelianStok of pembelianStoks) { %> 
+            <tr>
+                <th scope="row"><a href="/pembelianStok/<%= pembelianStok.nomorNota %>"><%= pembelianStok.nomorNota %></a></th>
+                <td><%= pembelianStok.tanggal.getDate() %>/<%= pembelianStok.tanggal.getMonth()+1 %>/<%= pembelianStok.tanggal.getFullYear() %></td>
+                <td><%= pembelianStok.jenis %></td>
+                <% for(let supplier of suppliers) {%>
+                    <% if(supplier.kode == pembelianStok.kodeSupplier) {%>
+                        <td><%= pembelianStok.kodeSupplier %> - <%= supplier.namaSupplier %></td>
+                    <% } %>     
+                <% } %>     
+                <td><%= pembelianStok.total %></td>
+            </tr>
+        <% } %> 
+    </tbody>
+</table>

@@ -1,0 +1,47 @@
+<style>
+    a {
+        color: inherit; /* blue colors for links too */
+        text-decoration: inherit; /* no underline */
+    }
+</style>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Kode</th>
+            <th scope="col">Nama Group</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% groupStoks.forEach((groupStok, i) => { %> 
+            <% if(i>=tempLowI && i<tempUpI) { %> 
+                <tr>
+                    <th scope="row"><%= groupStok.kode %></th>
+                    <td><a href="/stoks/groupStok/<%= groupStok._id %>"><%= groupStok.namaGroup %></a></td>
+                </tr>
+            <% } %>
+        <% }) %>      
+    </tbody>
+</table>
+<div class="mb-3">
+    <% if(groupStoks.length > 20) {%>
+        <% if(tempLowI == 0) {%> 
+            <form action="/stoks/groupStok/next" method="POST" style ='float: right;'>
+                <input type="text" name="lowI" id="lowI" value="<%= tempLowI %>" hidden>
+                <input type="text" name="upI" id="upI" value="<%= tempUpI %>" hidden>
+                <button class="btn btn-secondary">Next ></button>
+            </form>
+        <% } else { %>     
+            <form action="/stoks/groupStok/previous" method="POST" style ='float: left;'>
+                <input type="text" name="lowI" id="lowI" value="<%= tempLowI %>" hidden>
+                <input type="text" name="upI" id="upI" value="<%= tempUpI %>" hidden>
+                <button class="btn btn-secondary">< Previous</button>
+            </form>
+            <form action="/stoks/groupStok/next" method="POST" style ='float: right;'>
+                <input type="text" name="lowI" id="lowI" value="<%= tempLowI %>" hidden>
+                <input type="text" name="upI" id="upI" value="<%= tempUpI %>" hidden>
+                <button class="btn btn-secondary">Next ></button>
+            </form>
+        <% } %>     
+    <% } %>     
+</div>

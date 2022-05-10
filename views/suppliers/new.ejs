@@ -1,0 +1,71 @@
+<% layout('layouts/boilerplate') %> 
+
+<style>
+    #kode {
+        border: 1px solid #B2BABB;
+        border-radius: 5px;
+        margin-bottom: 15px;
+    }
+    .new-container {
+        background-color: #D6EAF8;
+        border: 1px solid #B2BABB;
+        border-radius: 10px;
+    }
+    .new-form {
+        margin: 20px 0px;
+    }
+</style>
+
+<div class="container new-container">
+    <h1>TAMBAH SUPPLIER</h1>
+    <form action="/suppliers" method="POST" class="new-form">
+        <div class="edit-container">
+            <label for="kode">Kode</label>
+            <br>
+            <input type="text" name="kode" id="kode" placeholder="kode" value="<%= supplierCount %>">
+        </div>
+        <div class="input-group mb-3">
+            <div class="col-md-2 col-sm-4 col-4">
+                <span class="input-group-text text-light bg-dark" id="inputGroup-sizing-default">Supplier</span>
+            </div>
+            <div class="col-md-10 col-sm-8 col-8">
+                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="namaSupplier" id="namaSupplier">
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <div class="col-md-2 col-sm-4 col-4">
+                <span class="input-group-text text-light bg-dark" id="inputGroup-sizing-default">Alamat</span>
+            </div>
+            <div class="col-md-10 col-sm-8 col-8">
+                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"  name="alamatSupplier" id="alamatSupplier">
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <div class="col-md-2 col-sm-4 col-4">
+                <span class="input-group-text text-light bg-dark" id="inputGroup-sizing-default">Kota</span>
+            </div>
+            <div class="col-md-10 col-sm-8 col-8">
+                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="kota" id="kota">
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <div class="col-md-2 col-sm-4 col-4">
+                <span class="input-group-text text-light bg-dark" id="inputGroup-sizing-default">Telpon</span>
+            </div>
+            <div class="col-md-10 col-sm-8 col-8">
+                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="telp" id="telp">
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <div class="col-md-2 col-sm-4 col-4">
+                <span class="input-group-text text-light bg-dark" id="inputGroup-sizing-default">NPWP</span>
+            </div>
+            <div class="col-md-10 col-sm-8 col-8">
+                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="npwp" id="npwp">
+            </div>
+        </div>
+      <button class="btn btn-primary">Submit</button>
+    </form>
+    <a href="/suppliers">back</a>
+  </div>
+  

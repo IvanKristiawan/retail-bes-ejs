@@ -1,0 +1,51 @@
+<% layout('layouts/boilerplate') %> 
+
+<style>
+    #kode {
+        border: 1px solid #B2BABB;
+        border-radius: 5px;
+        margin-bottom: 15px;
+    }
+    .new-container {
+        background-color: #D6EAF8;
+        border: 1px solid #B2BABB;
+        border-radius: 10px;
+    }
+    .new-form {
+        margin: 20px 0px;
+    }
+</style>
+
+<div class="container new-container">
+    <h1>EDIT PENJUALAN STOK</h1>
+    <form action="/penjualanStok/<%= penjualanStok.nomorNota %>?_method=PUT" method="POST" class="new-form">
+        <div class="edit-container mb-3">
+            <label for="kode">No. nota</label>
+            <br>
+            <input type="text" name="nomorNota" id="nomorNota" placeholder="Nomor Nota" value="<%= penjualanStok.nomorNota %>" readonly="readonly">
+        </div>
+        <div class="input-group mb-3">
+            <div class="col-md-2 col-sm-4 col-4">
+                <span class="input-group-text text-light bg-dark" id="inputGroup-sizing-default">Tanggal</span>
+            </div>
+            <div class="col-md-10 col-sm-8 col-8">
+                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="tanggal" id="tanggal" value="<%= penjualanStok.tanggal %>" hidden>
+                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="tanggalShow" id="tanggalShow" value="<%= penjualanStok.tanggal.getDate() %>/<%= penjualanStok.tanggal.getMonth()+1 %>/<%= penjualanStok.tanggal.getFullYear() %>" readonly="readonly">
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <div class="col-md-2 col-sm-4 col-4">
+                <span class="input-group-text text-light bg-dark" id="inputGroup-sizing-default">Jenis</span>
+            </div>
+            <div class="col-md-10 col-sm-8 col-8">
+                <select class="form-select choose-box" id="jenis" name="jenis">
+                    <option selected value="<%= penjualanStok.jenis %>"><%= penjualanStok.jenis %></option>
+                    <option value="TUNAI">TUNAI</option>
+                    <option value="KREDIT">KREDIT</option>
+                </select>
+            </div>
+        </div>
+      <button class="btn btn-primary">Submit</button>
+    </form>
+    <a href="/penjualanStok/<%= penjualanStok.nomorNota %>">back</a>
+  </div>

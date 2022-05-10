@@ -1,0 +1,68 @@
+<% layout('layouts/boilerplate') %> 
+
+<style>
+    @media (max-width: 800px) {
+        .wrapper {
+            flex-direction: column;
+        }
+    }
+    .index-wrapper {
+        border: 1px solid #B2BABB;
+        padding-top: 15px;
+        border-radius: 10px;
+        background-color: #D6EAF8;
+    }
+    .add-btn {
+        margin-top: 20px;
+    }
+    .wrapper {
+        border: 1px solid #CCD1D1;
+        border-radius: 10px;
+        margin: 20px 0px;
+        display: flex;
+        padding-top: 10px;
+    }
+    .list-wrapper {
+        display: flex;
+        flex: 1;
+    }
+    .detail-wrapper {
+        margin-right: 30px;
+    }
+    .list-details {
+        font-size: 15px;
+        font-weight: 500;
+    }
+</style>
+
+<div class="container index-wrapper">
+    <h3>PENJUALAN STOK</h3>
+    <div class="container">
+        <form class="d-flex" action="/penjualanStok/search" method="POST">
+            <input class="form-control me-2" placeholder="Cari Nomor Nota" aria-label="Search" type="text" name="nomorNota" id="nomorNota">
+            <button class="btn btn-outline-dark" type="submit">Search</button>
+        </form>
+        <a href="/penjualanStok/new"><button class="btn btn-primary add-btn">Add</button></a>
+    </div>
+    <div class="container wrapper">
+        <div class="list-wrapper">
+            <div class="detail-wrapper">
+                <p class="list-details">No. Nota</p>
+                <p class="list-details">Tanggal</p>
+                <p class="list-details">Jenis</p>
+                <p class="list-details">Total</p>
+            </div>
+            <div class="detail-data-wrapper">
+                <p class="list-details">: </p>
+                <p class="list-details">: </p>
+                <p class="list-details">: </p>
+                <p class="list-details">: </p>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row list-container">
+            <%- include('./list') %> 
+        </div>
+    </div>
+</div>

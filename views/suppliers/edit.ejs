@@ -1,0 +1,70 @@
+<% layout('layouts/boilerplate') %> 
+
+<style>
+    #kode {
+        border: 1px solid #B2BABB;
+        border-radius: 5px;
+        margin-bottom: 15px;
+    }
+    .new-container {
+        background-color: #D6EAF8;
+        border: 1px solid #B2BABB;
+        border-radius: 10px;
+    }
+    .new-form {
+        margin: 20px 0px;
+    }
+</style>
+
+<div class="container new-container">
+    <h1>EDIT SUPPLIER</h1>
+    <form action="/suppliers/<%= supplier._id %>?_method=PUT" method="POST" class="new-form">
+        <div class="edit-container">
+            <label for="kode">Kode</label>
+            <br>
+            <input type="text" name="kode" id="kode" placeholder="kode" value="<%= supplier.kode %>" readonly="readonly">
+        </div>
+        <div class="input-group mb-3">
+            <div class="col-md-2">
+                <span class="input-group-text text-light bg-dark" id="inputGroup-sizing-default">Supplier</span>
+            </div>
+            <div class="col-md-10">
+                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="namaSupplier" id="namaSupplier" value="<%= supplier.namaSupplier %>">
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <div class="col-md-2">
+                <span class="input-group-text text-light bg-dark" id="inputGroup-sizing-default">Alamat</span>
+            </div>
+            <div class="col-md-10">
+                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"  name="alamatSupplier" id="alamatSupplier" value="<%= supplier.alamatSupplier %>">
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <div class="col-md-2">
+                <span class="input-group-text text-light bg-dark" id="inputGroup-sizing-default">Kota</span>
+            </div>
+            <div class="col-md-10">
+                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="kota" id="kota" value="<%= supplier.kota %>">
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <div class="col-md-2">
+                <span class="input-group-text text-light bg-dark" id="inputGroup-sizing-default">Telpon</span>
+            </div>
+            <div class="col-md-10">
+                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="telp" id="telp" value="<%= supplier.telp %>">
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <div class="col-md-2">
+                <span class="input-group-text text-light bg-dark" id="inputGroup-sizing-default">NPWP</span>
+            </div>
+            <div class="col-md-10">
+                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="npwp" id="npwp" value="<%= supplier.npwp %>">
+            </div>
+        </div>
+      <button class="btn btn-primary">Submit</button>
+    </form>
+    <a href="/suppliers/<%= supplier._id %>">back</a>
+  </div>

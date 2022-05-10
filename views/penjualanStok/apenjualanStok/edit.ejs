@@ -1,0 +1,60 @@
+<% layout('layouts/boilerplate') %> 
+
+<style>
+    #kode {
+        border: 1px solid #B2BABB;
+        border-radius: 5px;
+        margin-bottom: 15px;
+    }
+    .new-container {
+        background-color: #D6EAF8;
+        border: 1px solid #B2BABB;
+        border-radius: 10px;
+    }
+    .new-form {
+        margin: 20px 0px;
+    }
+</style>
+
+<div class="container new-container">
+    <h1>PENJUALAN STOK</h1>
+    <form action="/penjualanStok/<%= penjualanStok.nomorNota %>/<%= apenjualanStok.kodeStok %>?_method=DELETE" method="POST">
+        <button class="btn btn-danger" style="margin-top: 10px;">Delete</button>
+    </form>
+    <form action="/penjualanStok/<%= penjualanStok.nomorNota %>/<%= apenjualanStok.kodeStok %>?_method=PUT" method="POST" class="new-form">
+        <input type="text" name="nomorNota" id="nomorNota" value="<%= apenjualanStok.nomorNota %>" hidden>
+        <div class="input-group mb-3">
+            <div class="col-md-2 col-sm-4 col-4">
+                <span class="input-group-text text-light bg-dark" id="inputGroup-sizing-default">Kode</span>
+            </div>
+            <div class="col-md-10 col-sm-8 col-8">
+                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="kodeStok" id="kodeStok" value="<%= apenjualanStok.kodeStok %>" readonly="readonly">
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <div class="col-md-2 col-sm-4 col-4">
+                <span class="input-group-text text-light bg-dark" id="inputGroup-sizing-default">Qty</span>
+            </div>
+            <div class="col-md-10 col-sm-8 col-8">
+                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="qty" id="qty" value="<%= apenjualanStok.qty %>" readonly="readonly">
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <div class="col-md-2 col-sm-4 col-4">
+                <span class="input-group-text text-light bg-dark" id="inputGroup-sizing-default">Harga Satuan</span>
+            </div>
+            <div class="col-md-10 col-sm-8 col-8">
+                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="hargaSatuan" id="hargaSatuan" value="<%= apenjualanStok.hargaSatuan %>" readonly="readonly">
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <div class="col-md-2 col-sm-4 col-4">
+                <span class="input-group-text text-light bg-dark" id="inputGroup-sizing-default">Potongan</span>
+            </div>
+            <div class="col-md-10 col-sm-8 col-8">
+                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="potongan" id="potongan" value="<%= apenjualanStok.potongan %>" readonly="readonly">
+            </div>
+        </div>
+    </form>
+    <a href="/penjualanStok/<%= penjualanStok.nomorNota %>">back</a>
+  </div>
